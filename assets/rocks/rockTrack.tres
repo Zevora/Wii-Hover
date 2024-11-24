@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bs4t4ue7q2gnf"]
+
+[resource]
+resource_name = "rockTrack"
+albedo_color = Color(0.99166, 0.786361, 0.70065, 1)
+metallic = 1.0

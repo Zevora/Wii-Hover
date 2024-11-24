@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://d00qh7sakwvw4"]
+
+[ext_resource type="PackedScene" uid="uid://xat4aff80oev" path="res://scenes/player.tscn" id="1_8xrsx"]
+[ext_resource type="PackedScene" uid="uid://d3gvxewl2di7r" path="res://scenes/environment_with_spawn.tscn" id="1_17r4q"]
+[ext_resource type="Script" path="res://scripts/gameManager.gd" id="3_fk1a1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0u2ge"]
+sky_top_color = Color(0.329238, 0.16267, 0.00170879, 1)
+sky_horizon_color = Color(0.400254, 0.20458, 0.0250998, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rsvce"]
+sky_material = SubResource("ProceduralSkyMaterial_0u2ge")
+
+[sub_resource type="Environment" id="Environment_d5fcf"]
+background_mode = 2
+sky = SubResource("Sky_rsvce")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.682863, 0.414387, 0.317068, 1)
+fog_light_energy = 0.35
+fog_sky_affect = 0.3
+
+[node name="Level 1" type="Node3D"]
+
+[node name="Ground" parent="." instance=ExtResource("1_17r4q")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d5fcf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 6, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_8xrsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965925, 0.258819, 0, -0.258819, 0.965925, 0, 3, 3)
+
+[node name="GameManger" type="Node" parent="."]
+script = ExtResource("3_fk1a1")

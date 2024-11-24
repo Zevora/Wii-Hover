@@ -1,0 +1,11 @@
+Model Information:
+* title:	Back to The Future II - Hover Board (Low Poly)
+* source:	https://sketchfab.com/3d-models/back-to-the-future-ii-hover-board-low-poly-42b6dd42d8f5470ba466f753d3256092
+* author:	TimMetcalf (https://sketchfab.com/TimMetcalf)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Back to The Future II - Hover Board (Low Poly)" (https://sketchfab.com/3d-models/back-to-the-future-ii-hover-board-low-poly-42b6dd42d8f5470ba466f753d3256092) by TimMetcalf (https://sketchfab.com/TimMetcalf) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

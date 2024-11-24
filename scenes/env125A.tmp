@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3gvxewl2di7r"]
+
+[ext_resource type="Script" path="res://scripts/player_trigger.gd" id="1_nrcgy"]
+[ext_resource type="Texture2D" uid="uid://chm5cfnwoaqrx" path="res://environment/textures/Ground049C_1K-PNG/Ground049C_1K-PNG_Color.png" id="2_i7mk7"]
+[ext_resource type="Texture2D" uid="uid://cl5gpgcqn361w" path="res://environment/textures/Ground049C_1K-PNG/Ground049C_1K-PNG_AmbientOcclusion.png" id="3_utfun"]
+[ext_resource type="Texture2D" uid="uid://cb2pxreo5x8q4" path="res://environment/textures/Ground049C_1K-PNG/Ground049C_1K-PNG_NormalGL.png" id="4_iux21"]
+[ext_resource type="Texture2D" uid="uid://dshwfyqqcm3w3" path="res://environment/textures/Ground049C_1K-PNG/Ground049C_1K-PNG_Roughness.png" id="5_aifnw"]
+[ext_resource type="PackedScene" uid="uid://btajodwww26yc" path="res://assets/rocks/rock_largeA.glb" id="6_lwn0e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ln85k"]
+size = Vector3(100, 20, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hg8ts"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mmfj"]
+albedo_texture = ExtResource("2_i7mk7")
+roughness_texture = ExtResource("5_aifnw")
+normal_enabled = true
+normal_texture = ExtResource("4_iux21")
+ao_texture = ExtResource("3_utfun")
+uv1_scale = Vector3(75, 75, 75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xm66h"]
+material = SubResource("StandardMaterial3D_3mmfj")
+size = Vector2(100, 100)
+center_offset = Vector3(0, 1, 0)
+
+[node name="Ground" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37.3)
+
+[node name="PlayerTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84082, -11.7)
+script = ExtResource("1_nrcgy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.1)
+shape = SubResource("BoxShape3D_ln85k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hg8ts")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_xm66h")
+
+[node name="rock_largeA2" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, 0)
+
+[node name="rock_largeA3" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -20)
+
+[node name="rock_largeA4" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -40)
+
+[node name="rock_largeA5" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -60)
+
+[node name="rock_largeA6" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -80)
+
+[node name="rock_largeA7" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -100)
+
+[node name="rock_largeA8" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -5, 0, 0)
+
+[node name="rock_largeA9" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -5, 0, -20)
+
+[node name="rock_largeA10" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -5, 0, -40)
+
+[node name="rock_largeA11" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -5, 0, -60)
+
+[node name="rock_largeA12" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -5, 0, -80)
+
+[node name="rock_largeA13" parent="." instance=ExtResource("6_lwn0e")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -5, 0, -100)

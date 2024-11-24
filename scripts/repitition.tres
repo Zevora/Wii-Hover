@@ -1,0 +1,126 @@
+[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://ds27x1qtw6m2b"]
+
+[ext_resource type="Texture2D" uid="uid://chm5cfnwoaqrx" path="res://environment/textures/Ground049C_1K-PNG/Ground049C_1K-PNG_Color.png" id="1_67377"]
+[ext_resource type="Texture2D" uid="uid://cidmh8lk3ib4r" path="res://environment/textures/Ground_Dirt_009_BaseColor.jpg" id="2_fulfe"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_aohqg"]
+input_name = "uv"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i28l6"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hg2ch"]
+noise = SubResource("FastNoiseLite_i28l6")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_73wsr"]
+texture = SubResource("NoiseTexture2D_hg2ch")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7xokp"]
+texture = ExtResource("1_67377")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_mx4va"]
+function = 1
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_yny4p"]
+constant = 4.0
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_4sakr"]
+texture = ExtResource("2_fulfe")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_ry1fd"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_k5j2g"]
+function = 1
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_5myao"]
+constant = 3.0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jj8yx"]
+input_name = "uv"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_5 : source_color;
+uniform sampler2D tex_frg_2 : source_color;
+uniform sampler2D tex_frg_11 : source_color;
+
+
+
+void fragment() {
+// Input:9
+	vec2 n_out9p0 = UV;
+
+
+// FloatConstant:8
+	float n_out8p0 = 3.000000;
+
+
+// UVFunc:7
+	vec2 n_in7p2 = vec2(0.00000, 0.00000);
+	vec2 n_out7p0 = (n_out9p0 - n_in7p2) * vec2(n_out8p0) + n_in7p2;
+
+
+// Texture2D:5
+	vec4 n_out5p0 = texture(tex_frg_5, n_out7p0);
+
+
+// Input:10
+	vec2 n_out10p0 = UV;
+
+
+// FloatConstant:4
+	float n_out4p0 = 4.000000;
+
+
+// UVFunc:3
+	vec2 n_in3p2 = vec2(0.00000, 0.00000);
+	vec2 n_out3p0 = (n_out10p0 - n_in3p2) * vec2(n_out4p0) + n_in3p2;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out3p0);
+
+
+// Texture2D:11
+	vec4 n_out11p0 = texture(tex_frg_11, UV);
+
+
+// Mix:6
+	vec3 n_out6p0 = mix(vec3(n_out5p0.xyz), vec3(n_out2p0.xyz), vec3(n_out11p0.xyz));
+
+
+// Output:0
+	ALBEDO = n_out6p0;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(1100, 60)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_7xokp")
+nodes/fragment/2/position = Vector2(-40, 180)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_mx4va")
+nodes/fragment/3/position = Vector2(-360, 220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_yny4p")
+nodes/fragment/4/position = Vector2(-680, 340)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_4sakr")
+nodes/fragment/5/position = Vector2(-40, 520)
+nodes/fragment/6/node = SubResource("VisualShaderNodeMix_ry1fd")
+nodes/fragment/6/position = Vector2(640, 280)
+nodes/fragment/7/node = SubResource("VisualShaderNodeUVFunc_k5j2g")
+nodes/fragment/7/position = Vector2(-340, 560)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatConstant_5myao")
+nodes/fragment/8/position = Vector2(-740, 700)
+nodes/fragment/9/node = SubResource("VisualShaderNodeInput_jj8yx")
+nodes/fragment/9/position = Vector2(-780, 560)
+nodes/fragment/10/node = SubResource("VisualShaderNodeInput_aohqg")
+nodes/fragment/10/position = Vector2(-760, 220)
+nodes/fragment/11/node = SubResource("VisualShaderNodeTexture_73wsr")
+nodes/fragment/11/position = Vector2(-80, 880)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 4, 0, 3, 1, 8, 0, 7, 1, 10, 0, 3, 0, 9, 0, 7, 0, 11, 0, 6, 2, 6, 0, 0, 0, 7, 0, 5, 0, 5, 0, 6, 0, 2, 0, 6, 1)

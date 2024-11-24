@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://by38ogt6sjbpg"]
+
+[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_3blga"]
+[ext_resource type="Shader" path="res://shaders/starry_sky.gdshader" id="2_6wcx1"]
+[ext_resource type="Script" path="res://scenes/distance_control.gd" id="4_m7ls3"]
+[ext_resource type="PackedScene" uid="uid://beppev8nvhd1b" path="res://scenes/player_with_spring_arm.tscn" id="4_skstr"]
+[ext_resource type="Script" path="res://scenes/spring_arm_3d.gd" id="5_a3o23"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ojw7"]
+shader = ExtResource("2_6wcx1")
+shader_parameter/sky_color = Color(0.03, 0.05, 0.11, 1)
+shader_parameter/star_base_color = Color(0.8, 1, 0.3, 1)
+shader_parameter/star_hue_offset = 0.6
+shader_parameter/star_intensity = 0.08
+shader_parameter/star_twinkle_speed = 0.8
+shader_parameter/star_twinkle_intensity = 0.2
+shader_parameter/layer_scale = 20.0
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_rsvce"]
+sky_material = SubResource("ShaderMaterial_0ojw7")
+
+[sub_resource type="Environment" id="Environment_d5fcf"]
+background_mode = 2
+sky = SubResource("Sky_rsvce")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.682863, 0.414387, 0.317068, 1)
+fog_light_energy = 0.35
+fog_sky_affect = 0.3
+
+[node name="Level 1" type="Node3D"]
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("1_3blga")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d5fcf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.97587, 0.0449067, 0.213687, -0.180415, 0.717091, 0.673224, -0.123001, -0.695531, 0.707889, -5, 63, 0)
+shadow_enabled = true
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("player")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("4_m7ls3")
+player = NodePath("../Player")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Distance: "
+
+[node name="Player" parent="." instance=ExtResource("4_skstr")]
+unique_name_in_owner = true
+fall_acceleration = null
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player" node_paths=PackedStringArray("player")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.548, 10)
+script = ExtResource("5_a3o23")
+player = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
+fov = 80.0
+
+[node name="InfoModal" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoModal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -62.0
+offset_right = 54.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YourScore" type="Label" parent="InfoModal/VBoxContainer"]
+layout_mode = 2
+text = "Your Score: "
+uppercase = true
+
+[node name="HighScore" type="Label" parent="InfoModal/VBoxContainer"]
+layout_mode = 2
+text = "High Score: "
+uppercase = true
+
+[node name="RetryButton" type="Button" parent="InfoModal/VBoxContainer"]
+layout_mode = 2
+text = "Retry"
+
+[node name="ExitButton" type="Button" parent="InfoModal/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="ColorRect" type="ColorRect" parent="InfoModal"]
+show_behind_parent = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.194403, 0.130695, 0.106568, 0.313726)

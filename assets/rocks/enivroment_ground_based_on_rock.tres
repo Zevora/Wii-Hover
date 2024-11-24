@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://i04pv0ponjx4"]
+
+[resource]
+resource_name = "rock"
+albedo_color = Color(0.924474, 0.606406, 0.467915, 1)
+metallic = 1.0
+grow_amount = -16.0

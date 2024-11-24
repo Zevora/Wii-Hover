@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://d00qh7sakwvw4"]
+
+[ext_resource type="PackedScene" uid="uid://xat4aff80oev" path="res://scenes/player.tscn" id="1_8xrsx"]
+[ext_resource type="Shader" path="res://shaders/starry_sky.gdshader" id="2_lcfoj"]
+[ext_resource type="Script" path="res://scripts/gameManager.gd" id="3_fk1a1"]
+[ext_resource type="Script" path="res://scenes/distance_control.gd" id="4_pdr20"]
+[ext_resource type="PackedScene" uid="uid://beppev8nvhd1b" path="res://scenes/player_with_spring_arm.tscn" id="5_rgc5j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ojw7"]
+shader = ExtResource("2_lcfoj")
+shader_parameter/sky_color = Color(0.03, 0.05, 0.11, 1)
+shader_parameter/star_base_color = Color(0.8, 1, 0.3, 1)
+shader_parameter/star_hue_offset = 0.6
+shader_parameter/star_intensity = 0.08
+shader_parameter/star_twinkle_speed = 0.8
+shader_parameter/star_twinkle_intensity = 0.2
+shader_parameter/layer_scale = 20.0
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_rsvce"]
+sky_material = SubResource("ShaderMaterial_0ojw7")
+
+[sub_resource type="Environment" id="Environment_d5fcf"]
+background_mode = 2
+sky = SubResource("Sky_rsvce")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.682863, 0.414387, 0.317068, 1)
+fog_light_energy = 0.35
+fog_sky_affect = 0.3
+
+[node name="Level 1" type="Node3D"]
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("3_fk1a1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d5fcf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.97587, 0.0449067, 0.213687, -0.180415, 0.717091, 0.673224, -0.123001, -0.695531, 0.707889, -5, 63, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_8xrsx")]
+process_mode = 4
+visible = false
+speed = 30
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 0.965925, 0.258819, 0, -0.258819, 0.965925, 0, 3, 3)
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("player")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("4_pdr20")
+player = NodePath("../Player")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Distance: "
+
+[node name="Player2" parent="." instance=ExtResource("5_rgc5j")]

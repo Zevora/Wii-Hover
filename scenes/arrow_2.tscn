@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://rusyvvw6jya4"]
+
+[ext_resource type="PackedScene" uid="uid://bpdbibafin6sw" path="res://assets/powerups/Arrow2.glb" id="1_8vfif"]
+[ext_resource type="Script" path="res://speed_boost.gd" id="2_pf5gm"]
+
+[node name="Arrow2" instance=ExtResource("1_8vfif")]
+script = ExtResource("2_pf5gm")
