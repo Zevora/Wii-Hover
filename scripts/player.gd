@@ -18,7 +18,7 @@ var lean_amount: float = 0.0 # Current lean rotation
 
 # The time the player has been colliding with an obstacle
 var collision_time: float = 0.0
-#Duration of the current collision
+# Max duration of the current collision before death
 const collision_duration = 0.25
 
 # Layer mask for crashables (CRASHABLES ARE ON LAYER 2)

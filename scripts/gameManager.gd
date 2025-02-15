@@ -9,6 +9,10 @@ var environment_preload = preload("res://scenes/environment_with_spawn.tscn")
 var environment_queue: Array[Node] = [] # array of active environments
 #var environment_instance: Node = null # Store the currently loaded environment
 
+var speed_boost_powerup = preload("res://scenes/arrow_2.tscn")
+#var shield_powerup = preload()
+#var slow_mo_powerup = preload()
+
 @onready var pause_menu = $"../InfoModal"
 
 # Load all GLTF files on ready
@@ -34,11 +38,11 @@ func _ready():
 	
 	var start_position = Transform3D(Basis(), Vector3(0, 0, 0))
 	
+	print("Printing the first 5 environments")
 	for i in range(5):
 	# Spawn the first ground at origin
 		spawn_environment(start_position)
 		start_position.origin.z -= 100 # subtract another 100 units on z
-		print("Printing the first 5 environments")
 	# Load all .glb or .gltf files in the specified folder
 func load_rock_files() -> Array[String]:
 	var files: Array[String] = []
@@ -80,10 +84,11 @@ func spawn_rock(current_location: Transform3D):
 					var spawn_position = current_location.origin
 					
 					# Adjust the z position for rows and x position for columns
-					spawn_position -= current_location.basis.z * (spawn_distance + (row * 20)) # Basis is 1 and we are specifying it is in the z direction
+					#spawn_position -= current_location.basis.z * (spawn_distance + (row * 20)) # Basis is 1 and we are specifying it is in the z direction
+					spawn_position -= current_location.basis.z * (spawn_distance + (row * randi_range(10, 30))) # Basis is 1 and we are specifying it is in the z direction with z randomness
 					#spawn_position += current_location.basis.x * ((col * randi_range(10, 30)) - 50) # So here it would be x basis which would be 1 times a random value between -35 and 35
 					spawn_position += current_location.basis.x * ((randi_range(-7, 7) * 5) - 20) # rocks can spawn in a range of -35 to 35 x
-					print("spawn position", spawn_position)
+					#print("spawn position", spawn_position) #printing the spawning of each rock
 
 					# Adjust spawn position as needed (e.g., for ground alignment)
 					spawn_position.y = 1  # Assuming the ground is at y = 0
@@ -99,9 +104,6 @@ func spawn_rock(current_location: Transform3D):
 func spawn_environment(current_location: Transform3D):
 	print("Spawning the environment")
 	
-	var powerup_spawner = randi() % 4
-	if powerup_spawner == 1:
-		spawn_powerup(powerup_spawner)
 	# Instance the new environment
 	var new_environment_instance = environment_preload.instantiate()  # Instantiate the PackedScene
 
@@ -130,15 +132,40 @@ func spawn_environment(current_location: Transform3D):
 			if oldest_environment:
 				oldest_environment.queue_free() # Remove it from the scene safely once it has been popped
 				print("Oldest environment deleted")
+				
+				# Call to spawn the powerups
+		var powerup_spawner = randi() % 4
+		if powerup_spawner == 1:
+			spawn_powerup(new_transform)
+
+		# Call to spawn the rocks ahead of the environment
+		#spawn_rock(new_environment_instance.global_transform)
 	else:
 		print("Error: Failed to instance environment scene.")
 	
-	# Call to spawn the rocks ahead of the environment
-	spawn_rock(new_environment_instance.global_transform)
+
 
 # function to spawn in powerups
-func spawn_powerup(random_value):
-	print("Spawning powerup!: ", random_value)
+func spawn_powerup(current_location: Transform3D):
+	if  not speed_boost_powerup:
+		print("Error: Failed to load arrow_2.tscn")
+		return
+		
+	var powerup_instance = speed_boost_powerup.instantiate() as Node3D
+	
+	if powerup_instance:
+		add_child(powerup_instance) # Add to scene tree
+		
+		# set random position within the nerw environment
+		var powerup_position = current_location.origin
+		powerup_position.x += randi_range(-20, 20) # Random X position
+		powerup_position.y = .75 # Slightly above ground to be visible
+		
+		powerup_instance.global_transform.origin = powerup_position
+		print("Powerup spawned at: ", powerup_position)
+	else:
+		print("Error: failed to instantiate powerup")
+	
 
 # function for when the player dies to show a modal with score / highscore / retry / exit
 func on_player_died():
