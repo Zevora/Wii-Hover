@@ -139,7 +139,7 @@ func spawn_environment(current_location: Transform3D):
 			spawn_powerup(new_transform)
 
 		# Call to spawn the rocks ahead of the environment
-		#spawn_rock(new_environment_instance.global_transform)
+		spawn_rock(new_environment_instance.global_transform)
 	else:
 		print("Error: Failed to instance environment scene.")
 	

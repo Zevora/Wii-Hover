@@ -1,7 +1,13 @@
 extends CharacterBody3D
 
 # How fast the player moves in meters per second.
-@export var speed = 7
+@export var speed = 40
+var original_speed = 40
+#@export var boosted_speed = 12 # Speed when boosted
+#@export var boost_duration =3.0 # How long the boost lasts in seconds
+
+var is_boosted = false
+var boost_timer = 0.0
 
 signal died
 @export var died_signal_emitted: bool = false
@@ -26,8 +32,12 @@ const crashable_layer = 1 << 1 # 1 << 1 results in 0000...0010 (which is Layer 2
 
 
 func _physics_process(delta):
-	var target_lean = 0.0 # Current lean angle
-	
+	if is_boosted:
+		boost_timer -= delta
+		if boost_timer <= 0:
+			speed = original_speed # Reset speed afterboost ends
+			is_boosted = false
+	print("constant speed: ",speed)
 	# get pause input
 	#if Input.is_action_pressed("pause"):
 		#$"../GameManager".on_esc()
@@ -42,6 +52,7 @@ func _physics_process(delta):
 	if direction.length() > 0:
 		move_and_slide()
 	
+	var target_lean = 0.0 # Current lean angle
 	target_lean = -sign(direction.x) * max_lean_angle
 	
 	# Smoothly interpoolate the lean towards the 
@@ -90,3 +101,17 @@ func is_colliding_with_crashable() -> bool:
 		if collision.get_collider() and collision.get_collider().collision_layer & crashable_layer != 0:
 			return true
 	return false
+	
+func is_colliding_with_powerup() -> bool:
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		if collision.get_collider() and collision.get_collider().is_in_group("powerups"):
+			return true
+	return false
+
+func apply_speed_boost(boosted_speed: float, boost_duration: float):
+	if !is_boosted:
+		speed = boosted_speed
+		is_boosted = true
+		boost_timer = boost_duration
+		print("Speed Boost Activated!")
