@@ -115,3 +115,9 @@ func apply_speed_boost(boosted_speed: float, boost_duration: float):
 		is_boosted = true
 		boost_timer = boost_duration
 		print("Speed Boost Activated!")
+		
+func apply_slow_mo():
+	Engine.time_scale = 0.5 # Set game speed to x0.75
+	await get_tree().create_timer(2.0, false).timeout #Wait for 2 seconds (Which will feel longer as the 2 seconds are counted slower?)
+	Engine.time_scale = 1.0 # Reset to normal speed
+	print("Slow Motion Activated!")

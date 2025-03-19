@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://107wsrmcycth"]
+
+[ext_resource type="PackedScene" uid="uid://clncgsufiq8h3" path="res://assets/powerups/Hour Glass.glb" id="1_cptkm"]
+[ext_resource type="Script" path="res://scripts/slow_mo.gd" id="1_yi4gx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_36nhg"]
+
+[node name="HourGlass" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="." groups=["powerups"]]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_yi4gx")
+
+[node name="Hour Glass" parent="Area3D" instance=ExtResource("1_cptkm")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 2, 0)
+shape = SubResource("CylinderShape3D_36nhg")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

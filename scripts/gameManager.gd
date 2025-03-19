@@ -10,6 +10,7 @@ var environment_queue: Array[Node] = [] # array of active environments
 #var environment_instance: Node = null # Store the currently loaded environment
 
 var speed_boost_powerup = preload("res://scenes/arrow_2.tscn")
+var slow_motion_powerup = preload("res://scenes/hour_glass.tscn")
 #var shield_powerup = preload()
 #var slow_mo_powerup = preload()
 
@@ -147,11 +148,12 @@ func spawn_environment(current_location: Transform3D):
 
 # function to spawn in powerups
 func spawn_powerup(current_location: Transform3D):
-	if  not speed_boost_powerup:
-		print("Error: Failed to load arrow_2.tscn")
-		return
+	#if  not speed_boost_powerup:
+		#print("Error: Failed to load arrow_2.tscn")
+		#return
 		
-	var powerup_instance = speed_boost_powerup.instantiate() as Node3D
+	#var powerup_instance = speed_boost_powerup.instantiate() as Node3D
+	var powerup_instance = slow_motion_powerup.instantiate() as Node3D
 	
 	if powerup_instance:
 		add_child(powerup_instance) # Add to scene tree

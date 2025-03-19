@@ -59,7 +59,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("3_3hjsb")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-speed = 40
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player" node_paths=PackedStringArray("player")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.548, 10)
