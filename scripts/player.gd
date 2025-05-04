@@ -25,7 +25,8 @@ var lean_amount: float = 0.0 # Current lean rotation
 # The time the player has been colliding with an obstacle
 var collision_time: float = 0.0
 # Max duration of the current collision before death
-const collision_duration = 0.25
+var collision_duration = 0.25
+var original_collision_duration = collision_duration
 
 # Layer mask for crashables (CRASHABLES ARE ON LAYER 2)
 const crashable_layer = 1 << 1 # 1 << 1 results in 0000...0010 (which is Layer 2)
@@ -38,6 +39,7 @@ func _physics_process(delta):
 			speed = original_speed # Reset speed afterboost ends
 			is_boosted = false
 	print("constant speed: ",speed)
+		
 	# get pause input
 	#if Input.is_action_pressed("pause"):
 		#$"../GameManager".on_esc()
@@ -91,7 +93,7 @@ func _physics_process(delta):
 		
 	# If collsision time exceedsd 2 seconds, trigger the "died" signal
 	if (collision_time >= collision_duration) and !died_signal_emitted:
-		print("Player collided with crashable for %0.2f seconds!" % collision_duration)
+		print("Player collided with crashable for %0.25f seconds!" % collision_duration)
 		emit_signal("died")
 		died_signal_emitted = true
 
@@ -121,3 +123,12 @@ func apply_slow_mo():
 	await get_tree().create_timer(2.0, false).timeout #Wait for 2 seconds (Which will feel longer as the 2 seconds are counted slower?)
 	Engine.time_scale = 1.0 # Reset to normal speed
 	print("Slow Motion Activated!")
+	
+func apply_shield_power_up(new_collision_duration: float, powerup_duration: float):
+		collision_duration = new_collision_duration
+		print("Shield Active")
+		#Timer to calculate powerup duration
+		await get_tree().create_timer(powerup_duration).timeout
+		#after powerup_duration, disable the shield
+		collision_duration = original_collision_duration
+		

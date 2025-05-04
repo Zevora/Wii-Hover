@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bro740x77mvfj"]
+
+[ext_resource type="PackedScene" uid="uid://dbcwsucstfvki" path="res://assets/powerups/shield.glb" id="1_jhjo0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_srb5m"]
+size = Vector3(1, 1, 0.2)
+
+[node name="shieldRoot" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="shield" parent="Area3D" instance=ExtResource("1_jhjo0")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -2.76, -3.4, -0.38)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+shape = SubResource("BoxShape3D_srb5m")

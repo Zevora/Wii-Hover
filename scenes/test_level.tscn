@@ -87,7 +87,6 @@ player = NodePath("..")
 fov = 80.0
 
 [node name="InfoModal" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,6 +118,11 @@ layout_mode = 2
 text = "High Score: "
 uppercase = true
 script = ExtResource("6_7qhkf")
+
+[node name="ContinueButton" type="Button" parent="InfoModal/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+text = "Continue"
 
 [node name="RetryButton" type="Button" parent="InfoModal/VBoxContainer"]
 process_mode = 2
