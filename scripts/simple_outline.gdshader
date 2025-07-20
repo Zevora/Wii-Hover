@@ -1,14 +1,14 @@
 shader_type spatial;
-render_mode blend_mix, cull_front, unshaded;
+render_mode unshaded, cull_front;
 
-uniform vec4 color : source_color = vec4(1,0,0,1);
-uniform float size : hint_range(1.0, 1.5, 0.01) = 1.05;
+uniform vec4 outline_color : source_color = vec4(0.1, 0.8, 1.0, 1.0);
+uniform float outline_thickness = 0.05;
 
 void vertex() {
-	VERTEX *= size;
+    VERTEX += NORMAL * outline_thickness;
 }
 
 void fragment() {
-	ALBEDO = color.rgb;
-	ALPHA = color.a;
+    ALBEDO = outline_color.rgb;
+    ALPHA = outline_color.a;
 }

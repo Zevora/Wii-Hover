@@ -9,6 +9,8 @@ var original_speed = 40
 var is_boosted = false
 var boost_timer = 0.0
 
+var slow_mo_timer = 2.0
+
 signal died
 @export var died_signal_emitted: bool = false
 
@@ -31,6 +33,7 @@ var original_collision_duration = collision_duration
 # Layer mask for crashables (CRASHABLES ARE ON LAYER 2)
 const crashable_layer = 1 << 1 # 1 << 1 results in 0000...0010 (which is Layer 2)
 
+@export var outline_overlay: StandardMaterial3D # assigned in inspector
 
 func _physics_process(delta):
 	if is_boosted:
@@ -38,11 +41,6 @@ func _physics_process(delta):
 		if boost_timer <= 0:
 			speed = original_speed # Reset speed afterboost ends
 			is_boosted = false
-	print("constant speed: ",speed)
-		
-	# get pause input
-	#if Input.is_action_pressed("pause"):
-		#$"../GameManager".on_esc()
 	
 	# input direction using action strength
 	var input_strength = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -114,21 +112,35 @@ func is_colliding_with_powerup() -> bool:
 func apply_speed_boost(boosted_speed: float, boost_duration: float):
 	if !is_boosted:
 		speed = boosted_speed
+		apply_outline_overlay(boost_duration, Color8(194,147,255)) # Make Purple
 		is_boosted = true
 		boost_timer = boost_duration
 		print("Speed Boost Activated!")
 		
 func apply_slow_mo():
+	apply_outline_overlay(slow_mo_timer, Color8(0,190,245)) #rgba MAKE Blue https://docs.godotengine.org/en/stable/classes/class_basematerial3d.html#class-basematerial3d-property-albedo-color
 	Engine.time_scale = 0.5 # Set game speed to x0.75
-	await get_tree().create_timer(2.0, false).timeout #Wait for 2 seconds (Which will feel longer as the 2 seconds are counted slower?)
+	await get_tree().create_timer(slow_mo_timer, false).timeout #Wait for 2 seconds (Which will feel longer as the 2 seconds are counted slower?)
 	Engine.time_scale = 1.0 # Reset to normal speed
 	print("Slow Motion Activated!")
 	
 func apply_shield_power_up(new_collision_duration: float, powerup_duration: float):
 		collision_duration = new_collision_duration
 		print("Shield Active")
+		apply_outline_overlay(powerup_duration, Color8(104, 202, 0)) # Make Green
 		#Timer to calculate powerup duration
 		await get_tree().create_timer(powerup_duration).timeout
 		#after powerup_duration, disable the shield
 		collision_duration = original_collision_duration
 		
+func apply_outline_overlay(duration: float, color: Color):
+	outline_overlay.albedo_color = color
+	print("color that is being set:  ", color)
+	for mesh in get_tree().get_nodes_in_group("player_body_parts"):
+		mesh.material_overlay = outline_overlay
+		
+	await get_tree().create_timer(duration).timeout
+	
+	for mesh in get_tree().get_nodes_in_group("player_body_parts"):
+		mesh.material_overlay = null
+	outline_overlay.albedo_color = Color(0,0,0,0)

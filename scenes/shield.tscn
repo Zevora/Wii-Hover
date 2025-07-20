@@ -1,17 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://bro740x77mvfj"]
+[gd_scene load_steps=6 format=3 uid="uid://bro740x77mvfj"]
 
 [ext_resource type="PackedScene" uid="uid://dbcwsucstfvki" path="res://assets/powerups/shield.glb" id="1_jhjo0"]
+[ext_resource type="Script" path="res://scripts/shield_power_up.gd" id="1_nlkr0"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_srb5m"]
-size = Vector3(1, 1, 0.2)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m7te6"]
+height = 10.0
+radius = 0.85
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ugi5i"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3jj1"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_color = Color(0.407843, 0.792157, 0, 0.180392)
+emission = Color(0.407843, 0.792157, 0, 1)
+disable_receive_shadows = true
 
 [node name="shieldRoot" type="Node3D"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["powerups"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+script = ExtResource("1_nlkr0")
 
 [node name="shield" parent="Area3D" instance=ExtResource("1_jhjo0")]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -2.76, -3.4, -0.38)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
-shape = SubResource("BoxShape3D_srb5m")
+shape = SubResource("CylinderShape3D_m7te6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+mesh = SubResource("CylinderMesh_ugi5i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_q3jj1")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -18,7 +18,7 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func load_leaderboard():
-	var leaderboard_path = "user://leaderboard.dat"
+	var leaderboard_path = "user://leaderboard.txt"
 	var leaderboard_container = $ScrollContainer/VBoxContainer
 	#leaderboard_container.clear() # Make sure that the leaderboard is has no old entries
 	for child in leaderboard_container.get_children():
@@ -30,13 +30,13 @@ func load_leaderboard():
 		
 		while not file.eof_reached():
 			var score = file.get_line()
+			print("Line read from file: ", score)
 			if score == "":
 				continue
 			var label = Label.new()
 			label.text = str(rank) + ". " + score
 			label.add_theme_color_override("font_color", Color.WHITE)
 			leaderboard_container.add_child(label)
-			
 			rank += 1
 			
 		file.close()
@@ -45,7 +45,7 @@ func load_leaderboard():
 
 func ensure_leaderboard_exists():
 	var source_path = "user://original_leaderboard.txt"
-	var target_path = "user://leaderboard.dat"
+	var target_path = "user://leaderboard.txt"
 	
 	if not FileAccess.file_exists(target_path):
 		if FileAccess.file_exists(source_path):
@@ -58,7 +58,7 @@ func ensure_leaderboard_exists():
 				
 			source_file.close()
 			target_file.close()
-			print("Ensured leaderboard exists")
+			print("Leaderboard copied from original")
 		else:
 			print("Original leaderboard not found at: ", source_path)
 	print("Done ensuring the leaderboard exists")

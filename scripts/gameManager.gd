@@ -13,6 +13,7 @@ var speed_boost_powerup = preload("res://scenes/arrow_2.tscn")
 var slow_motion_powerup = preload("res://scenes/hour_glass.tscn")
 var shield_powerup = preload("res://scenes/shield.tscn")
 
+var your_score_label: Label
 
 @onready var pause_menu = $"../InfoModal"
 
@@ -44,6 +45,7 @@ func _ready():
 	# Spawn the first ground at origin
 		spawn_environment(start_position)
 		start_position.origin.z -= 100 # subtract another 100 units on z
+	
 	# Load all .glb or .gltf files in the specified folder
 func load_rock_files() -> Array[String]:
 	var files: Array[String] = []
@@ -183,13 +185,14 @@ func on_player_died():
 func toggle_pause():
 	get_tree().paused = !get_tree().paused
 	pause_menu.visible = get_tree().paused
+	$"../InfoModal/VBoxContainer/YourScore".text = "Your Score: %d meters" % $"../Control".distance
 	$"../InfoModal/VBoxContainer/HighScore".load_highscore()
 	print("Game paused: ", get_tree().paused)
 
 func handle_final_score(score):
 	var hold = false
 	if hold:
-		var leaderboard_file = FileAccess.open("user://leaderboard.dat", FileAccess.WRITE)
+		var leaderboard_file = FileAccess.open("user://leaderboard.txt", FileAccess.WRITE)
 		leaderboard_file.store_64(score)
 		leaderboard_file.close()
 		print("High score saved: ", score)

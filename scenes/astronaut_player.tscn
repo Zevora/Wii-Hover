@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://fmd4tfdpkwrw"]
+[gd_scene load_steps=24 format=4 uid="uid://fmd4tfdpkwrw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ym3jt"]
-[ext_resource type="PackedScene" uid="uid://c01k7rf1jkafx" path="res://assets/back_to_the_future_ii_-_hover_board_low_poly/scene.gltf" id="3_t70sf"]
+[ext_resource type="Material" uid="uid://d0riwxxqb2yu8" path="res://shaders/simple_outline.tres" id="2_pjs4k"]
+[ext_resource type="PackedScene" uid="uid://c4fvty0cofra1" path="res://scenes/hoverboard_inherited.tscn" id="3_4et5e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fweh"]
 resource_name = "dark"
@@ -491,6 +492,7 @@ _data = {
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_ym3jt")
+outline_overlay = ExtResource("2_pjs4k")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
@@ -498,32 +500,32 @@ transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
 [node name="astronautB" type="Node3D" parent="Pivot"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.135, 0, -0.07)
 
-[node name="armLeft" type="MeshInstance3D" parent="Pivot/astronautB"]
+[node name="armLeft" type="MeshInstance3D" parent="Pivot/astronautB" groups=["player_body_parts"]]
 transform = Transform3D(0.60698, 0.60698, 0, -0.4292, 0.4292, -0.60698, -0.4292, 0.4292, 0.60698, -0.13, 0.473184, 0)
 mesh = SubResource("ArrayMesh_ub5ew")
 skeleton = NodePath("")
 
-[node name="armRight" type="MeshInstance3D" parent="Pivot/astronautB"]
+[node name="armRight" type="MeshInstance3D" parent="Pivot/astronautB" groups=["player_body_parts"]]
 transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, -0.5, 0.25, 0.433013, 0.866025, 0.13, 0.473184, 0)
 mesh = SubResource("ArrayMesh_hpeuc")
 skeleton = NodePath("")
 
-[node name="body" type="MeshInstance3D" parent="Pivot/astronautB"]
+[node name="body" type="MeshInstance3D" parent="Pivot/astronautB" groups=["player_body_parts"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223184, 0)
 mesh = SubResource("ArrayMesh_yfky7")
 skeleton = NodePath("")
 
-[node name="head" type="MeshInstance3D" parent="Pivot/astronautB"]
+[node name="head" type="MeshInstance3D" parent="Pivot/astronautB" groups=["player_body_parts"]]
 transform = Transform3D(0.067293, 0, 0.251141, 0, 0.26, 0, -0.251141, 0, 0.067293, 0, 0.483184, 0)
 mesh = SubResource("ArrayMesh_kw6pf")
 skeleton = NodePath("")
 
-[node name="legLeft" type="MeshInstance3D" parent="Pivot/astronautB"]
+[node name="legLeft" type="MeshInstance3D" parent="Pivot/astronautB" groups=["player_body_parts"]]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -0.13, 0.223184, 0)
 mesh = SubResource("ArrayMesh_5bogs")
 skeleton = NodePath("")
 
-[node name="legRight" type="MeshInstance3D" parent="Pivot/astronautB"]
+[node name="legRight" type="MeshInstance3D" parent="Pivot/astronautB" groups=["player_body_parts"]]
 transform = Transform3D(0.829151, -0.22217, 0, 0.22217, 0.829151, 0, 0, 0, 0.8584, 0.13, 0.223184, 0)
 mesh = SubResource("ArrayMesh_3plco")
 skeleton = NodePath("")
@@ -534,7 +536,7 @@ libraries = {
 "": SubResource("AnimationLibrary_3n7sd")
 }
 
-[node name="hoverboard" parent="Pivot" instance=ExtResource("3_t70sf")]
+[node name="hoverboard" parent="Pivot" instance=ExtResource("3_4et5e")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.31, -0.275, -0.285)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

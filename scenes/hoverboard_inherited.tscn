@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4fvty0cofra1"]
+
+[ext_resource type="PackedScene" uid="uid://c01k7rf1jkafx" path="res://assets/back_to_the_future_ii_-_hover_board_low_poly/scene.gltf" id="1_pxbx5"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_pxbx5")]

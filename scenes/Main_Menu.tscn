@@ -5,7 +5,14 @@
 [ext_resource type="FontFile" uid="uid://07y0yohjh0b1" path="res://assets/fonts/continuum/contb.ttf" id="3_hpch5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwelt"]
+content_margin_left = 100.0
+content_margin_top = 50.0
+content_margin_bottom = 50.0
 bg_color = Color(0.458824, 0.458824, 0.458824, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ebc54")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 2
 offset_left = 442.0
 offset_top = 113.0
@@ -90,6 +97,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Leaderboard" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 281.0
+offset_right = 1042.0
+offset_bottom = 331.0
+theme_override_colors/font_outline_color = Color(0.344076, 0.344076, 0.344076, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("3_hpch5")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Leader[color=#cb6aff]Board[/color][/center]"
+scroll_active = false
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
