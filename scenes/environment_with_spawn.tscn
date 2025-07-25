@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player_trigger.gd" id="1_nrcgy"]
 [ext_resource type="Material" uid="uid://i04pv0ponjx4" path="res://assets/rocks/enivroment_ground_based_on_rock.tres" id="2_ift63"]
-[ext_resource type="PackedScene" uid="uid://btajodwww26yc" path="res://assets/rocks/rock_largeA.glb" id="6_b1f3j"]
+[ext_resource type="PackedScene" uid="uid://y74lcqnkieq6" path="res://assets/rocks/textured_rock_largeA.tscn" id="3_m3usx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ln85k"]
 size = Vector3(100, 20, 1)
@@ -32,40 +32,40 @@ shape = SubResource("BoxShape3D_hg8ts")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 mesh = SubResource("PlaneMesh_xm66h")
 
-[node name="rock_largeA8" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, 0)
+[node name="rock_largeA2" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(-26.2386, 0, -14.5443, 0, 30, 0, 14.5443, 0, -26.2386, -50, 0, 50)
 
-[node name="rock_largeA14" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10, 0, 0)
+[node name="rock_largeA3" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -50, -2.04, 30)
 
-[node name="rock_largeA15" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10, 0, -20)
+[node name="rock_largeA4" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(17.293, 0, 24.5143, 0, 30, 0, -24.5143, 0, 17.293, -50, -3, 10)
 
-[node name="rock_largeA16" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10, 0, -40)
+[node name="rock_largeA5" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -50, 0, -10)
 
-[node name="rock_largeA17" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10, 0, -60)
+[node name="rock_largeA6" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(-7.76457, 0, 28.9778, 0, 30, 0, -28.9778, 0, -7.76457, -50, -3, -30)
 
-[node name="rock_largeA18" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10, 0, -80)
+[node name="rock_largeA7" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(7.76457, 0, -28.9778, 0, 30, 0, 28.9778, 0, 7.76457, -50, 0, -44)
 
-[node name="rock_largeA19" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10, 0, -100)
+[node name="rock_largeA14" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(26.2386, 0, 14.5443, 0, 30, 0, -14.5443, 0, 26.2386, 48, 0, -48)
 
-[node name="rock_largeA9" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -20)
+[node name="rock_largeA15" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(-30, 0, -2.62268e-06, 0, 30, 0, 2.62268e-06, 0, -30, 48, -2.04, -28)
 
-[node name="rock_largeA10" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -40)
+[node name="rock_largeA16" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(-17.293, 0, -24.5143, 0, 30, 0, 24.5143, 0, -17.293, 48, -3, -8)
 
-[node name="rock_largeA11" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -60)
+[node name="rock_largeA17" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(-30, 0, -2.62268e-06, 0, 30, 0, 2.62268e-06, 0, -30, 48, 0, 12)
 
-[node name="rock_largeA12" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -80)
+[node name="rock_largeA18" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(7.76457, 0, -28.9778, 0, 30, 0, 28.9778, 0, 7.76457, 48, -3, 32)
 
-[node name="rock_largeA13" parent="." instance=ExtResource("6_b1f3j")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -110, 0, -100)
+[node name="rock_largeA19" parent="." instance=ExtResource("3_m3usx")]
+transform = Transform3D(-7.76457, 0, 28.9778, 0, 30, 0, -28.9778, 0, -7.76457, 48, 0, 46)
 
 [connection signal="body_entered" from="PlayerTrigger" to="PlayerTrigger" method="_on_body_entered"]

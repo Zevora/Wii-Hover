@@ -271,14 +271,17 @@ collision_mask = 8
 script = ExtResource("2_pf5gm")
 
 [node name="group568754965" type="MeshInstance3D" parent="Area3D"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_qyssn")
 skeleton = NodePath("")
 
 [node name="group337180965" type="MeshInstance3D" parent="Area3D"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_620jt")
 skeleton = NodePath("")
 
 [node name="group2044901335" type="MeshInstance3D" parent="Area3D"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_c8i2h")
 skeleton = NodePath("")
 

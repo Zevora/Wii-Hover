@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://kfswnwdt6h7l"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ebc54"]
+[ext_resource type="FontFile" uid="uid://khpia2af10p7" path="res://assets/fonts/continuum/contm.ttf" id="1_t0slr"]
+[ext_resource type="FontFile" uid="uid://07y0yohjh0b1" path="res://assets/fonts/continuum/contb.ttf" id="3_hpch5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwelt"]
+content_margin_left = 100.0
+content_margin_top = 50.0
+content_margin_bottom = 50.0
+bg_color = Color(0.458824, 0.458824, 0.458824, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ebc54")
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 442.0
+offset_top = 113.0
+offset_right = 1043.0
+offset_bottom = 264.0
+theme_override_colors/font_outline_color = Color(0.344076, 0.344076, 0.344076, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("3_hpch5")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Wii[color=#cb6aff]Hover[/color][/center]"
+scroll_active = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 87.0
+offset_top = -364.0
+offset_right = 198.0
+offset_bottom = -212.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+theme_override_colors/icon_focus_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_fonts/font = ExtResource("1_t0slr")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_colors/icon_focus_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_fonts/font = ExtResource("1_t0slr")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_colors/icon_focus_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_fonts/font = ExtResource("1_t0slr")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 275.0
+offset_right = 1065.0
+offset_bottom = 595.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwelt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Leaderboard" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 281.0
+offset_right = 1042.0
+offset_bottom = 331.0
+theme_override_colors/font_outline_color = Color(0.344076, 0.344076, 0.344076, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/normal_font = ExtResource("3_hpch5")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Leader[color=#cb6aff]Board[/color][/center]"
+scroll_active = false
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

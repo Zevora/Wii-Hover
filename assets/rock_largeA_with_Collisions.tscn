@@ -1,16 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://d12y7gt2msbi4"]
+[gd_scene load_steps=2 format=3 uid="uid://d12y7gt2msbi4"]
 
 [ext_resource type="PackedScene" uid="uid://btajodwww26yc" path="res://assets/rocks/rock_largeA.glb" id="1_3n5h6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wg8sq"]
-
 [node name="rock_largeA2" instance=ExtResource("1_3n5h6")]
-
-[node name="@StaticBody3D@61085" type="StaticBody3D" parent="tmpParent/rock_largeA" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.5)
-collision_layer = 2
-collision_mask = 8
-
-[node name="@CollisionShape3D@61086" type="CollisionShape3D" parent="tmpParent/rock_largeA/StaticBody3D" index="0"]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 1.5)
-shape = SubResource("BoxShape3D_wg8sq")

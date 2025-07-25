@@ -180,6 +180,7 @@ func on_player_died():
 	
 	# Handle saving the final score to the leaderboard file
 	handle_final_score($"../Control".distance)
+	$"../InfoModal/VBoxContainer/YourScore".text = "Your Score: %d meters" % $"../Control".distance
 	$"../InfoModal/VBoxContainer/HighScore".load_highscore()
 	
 func toggle_pause():
@@ -190,6 +191,7 @@ func toggle_pause():
 	print("Game paused: ", get_tree().paused)
 
 func handle_final_score(score):
+	print("FINAL SCORE: ", score)
 	var hold = false
 	if hold:
 		var leaderboard_file = FileAccess.open("user://leaderboard.txt", FileAccess.WRITE)

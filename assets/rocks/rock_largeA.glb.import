@@ -35,11 +35,11 @@ _subresources={
 "materials": {
 "rock": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/rocks/rock.tres"
+"use_external/path": "res://assets/rocks/textured_rock_sides.tres"
 },
 "rockTrack": {
 "use_external/enabled": true,
-"use_external/path": "res://assets/rocks/rockTrack.tres"
+"use_external/path": "res://assets/rocks/textured_rock_top.tres"
 }
 },
 "nodes": {

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbs1omq31vx6s"]
+
+[ext_resource type="PackedScene" uid="uid://clncgsufiq8h3" path="res://assets/powerups/Hour Glass.glb" id="1_3kv5i"]
+
+[node name="Hour Glass" instance=ExtResource("1_3kv5i")]
+
+[node name="Node" parent="." index="0"]
+cast_shadow = 0

@@ -20,8 +20,3 @@ func load_highscore():
 		
 		leaderboard_file.close()
 	return -1 # Default if no score found
-			#var high_score = leaderboard_file.get_as_text()
-			#leaderboard_file.close()
-			#print("High score loaded: ", high_score)
-			#return high_score
-	

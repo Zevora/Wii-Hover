@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0c1o80y1b1rd"]
+
+[ext_resource type="PackedScene" uid="uid://cm77ya2dm1upy" path="res://assets/kenney_space-kit/Models/GLTF format/craterLarge.glb" id="1_1xbnp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_caxla"]
+
+[node name="craterLarge2" instance=ExtResource("1_1xbnp")]
+
+[node name="craterLarge" parent="tmpParent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tmpParent/craterLarge" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tmpParent/craterLarge/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_caxla")

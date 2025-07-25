@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ba65gxe5xjls0"]
+
+[ext_resource type="Texture2D" uid="uid://dpi1ra3t587h2" path="res://environment/textures/Ground079L_1K-JPG/Ground079L_1K-JPG_Color.jpg" id="1_2stcs"]
+[ext_resource type="Texture2D" uid="uid://cwlihpagd6sul" path="res://environment/textures/Ground079L_1K-JPG/Ground079L_1K-JPG_NormalDX.jpg" id="2_fkmko"]
+
+[resource]
+albedo_color = Color(0.741176, 0.521569, 0.47451, 1)
+albedo_texture = ExtResource("1_2stcs")
+normal_enabled = true
+normal_texture = ExtResource("2_fkmko")
+uv1_scale = Vector3(0.2, 0.2, 0.2)

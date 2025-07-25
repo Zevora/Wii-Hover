@@ -7,7 +7,7 @@ extends Node
 # Increase it to 10 seconds for 5 seconds then back to .25.
 
 var new_collision_duration = 5
-var powerup_duration = 10
+var powerup_duration = 3
 
 # Check if collides with player and remove the powerup from the ground
 func _on_body_entered(body):

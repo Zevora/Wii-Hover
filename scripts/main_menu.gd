@@ -9,12 +9,9 @@ func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/test_level_with_astro.tscn")
 
 func _on_options_button_pressed():
-	pass # Replace with function body.
-	# can just pop up a modal to change the options
+	get_tree().change_scene_to_file("res://scenes/options/scenes/menus/options_menu/master_options_menu_with_tabs.tscn")
 
 func _on_quit_button_pressed():
-	pass # Replace with function body.
-	# Close the game
 	get_tree().quit()
 
 func load_leaderboard():

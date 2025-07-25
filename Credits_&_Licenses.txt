@@ -5,3 +5,4 @@ Licenses:
 	Hour Glass by Poly by Google [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/0nA658LJlU7)
 	shield by abdallah hegazy [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/0ssZecQb8IU)
 	Arrow2 by Bharadwaj B [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/ebdNfNmww_7)
+	 [Marek Belski and contributors](https://github.com/Maaack/Godot-Options-Menus/graphs/contributors)
