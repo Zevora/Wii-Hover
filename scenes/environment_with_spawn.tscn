@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3gvxewl2di7r"]
 
-[ext_resource type="Script" path="res://scripts/player_trigger.gd" id="1_nrcgy"]
+[ext_resource type="Script" uid="uid://djx6p108e14d1" path="res://scripts/player_trigger.gd" id="1_nrcgy"]
 [ext_resource type="Material" uid="uid://i04pv0ponjx4" path="res://assets/rocks/enivroment_ground_based_on_rock.tres" id="2_ift63"]
 [ext_resource type="PackedScene" uid="uid://y74lcqnkieq6" path="res://assets/rocks/textured_rock_largeA.tscn" id="3_m3usx"]
 

@@ -481,7 +481,7 @@ tracks/1/keys = PackedFloat32Array()
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3n7sd"]
 _data = {
-"Hover": SubResource("Animation_a8aoo")
+&"Hover": SubResource("Animation_a8aoo")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_14dgp"]

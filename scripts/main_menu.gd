@@ -7,6 +7,9 @@ func _ready():
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/test_level_with_astro.tscn")
+	
+func _on_customization_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/options/scenes/menus/Carousel3D.tscn")
 
 func _on_options_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/options/scenes/menus/options_menu/master_options_menu_with_tabs.tscn")

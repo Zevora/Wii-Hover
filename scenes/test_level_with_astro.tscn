@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://qxys5y8pup2k"]
 
-[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_424wn"]
-[ext_resource type="Shader" path="res://shaders/starry_sky.gdshader" id="2_cbarr"]
+[ext_resource type="Script" uid="uid://d0h4qb5cy2rhs" path="res://scripts/gameManager.gd" id="1_424wn"]
+[ext_resource type="Shader" uid="uid://cpkkvqto84q8a" path="res://shaders/starry_sky.gdshader" id="2_cbarr"]
 [ext_resource type="PackedScene" uid="uid://fmd4tfdpkwrw" path="res://scenes/astronaut_player.tscn" id="3_3hjsb"]
-[ext_resource type="Script" path="res://scripts/distance_control.gd" id="3_wprs1"]
-[ext_resource type="Script" path="res://scripts/spring_arm_3d.gd" id="5_ml1rf"]
-[ext_resource type="Script" path="res://scripts/high_score.gd" id="6_81dld"]
-[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="7_msg1h"]
+[ext_resource type="Script" uid="uid://dydi00ji4xdrk" path="res://scripts/distance_control.gd" id="3_wprs1"]
+[ext_resource type="Script" uid="uid://bpyrovix2vxew" path="res://scripts/spring_arm_3d.gd" id="5_ml1rf"]
+[ext_resource type="Script" uid="uid://boewfvvjmiwt1" path="res://scripts/high_score.gd" id="6_81dld"]
+[ext_resource type="Shader" uid="uid://dpqpqs6y66voc" path="res://shaders/dither.gdshader" id="7_msg1h"]
 [ext_resource type="Texture2D" uid="uid://crrkdww058xop" path="res://shaders/slso8-1x.png" id="8_5slj2"]
 [ext_resource type="Texture2D" uid="uid://ukls53r4glw1" path="res://shaders/dither_matrix.png" id="9_a38ke"]
 
@@ -37,12 +37,12 @@ fog_sky_affect = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ckdhn"]
 shader = ExtResource("7_msg1h")
+shader_parameter/u_dither_tex = ExtResource("9_a38ke")
+shader_parameter/u_color_tex = ExtResource("8_5slj2")
 shader_parameter/u_bit_depth = 32
 shader_parameter/u_contrast = 1.0
 shader_parameter/u_offset = 0.0
 shader_parameter/u_dither_size = 1
-shader_parameter/u_dither_tex = ExtResource("9_a38ke")
-shader_parameter/u_color_tex = ExtResource("8_5slj2")
 
 [node name="Level 1" type="Node3D"]
 

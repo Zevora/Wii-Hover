@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://kfswnwdt6h7l"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ebc54"]
+[ext_resource type="Script" uid="uid://cm2usppyu2vvg" path="res://scripts/main_menu.gd" id="1_ebc54"]
 [ext_resource type="FontFile" uid="uid://khpia2af10p7" path="res://assets/fonts/continuum/contm.ttf" id="1_t0slr"]
 [ext_resource type="FontFile" uid="uid://07y0yohjh0b1" path="res://assets/fonts/continuum/contb.ttf" id="3_hpch5"]
 
@@ -54,8 +54,8 @@ theme_override_constants/separation = 10
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../CustomizationButton")
-theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_colors/icon_focus_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_fonts/font = ExtResource("1_t0slr")
 theme_override_font_sizes/font_size = 32
 text = "Start"
@@ -64,8 +64,8 @@ text = "Start"
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
-theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_colors/icon_focus_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_fonts/font = ExtResource("1_t0slr")
 theme_override_font_sizes/font_size = 32
 text = "Customize"
@@ -74,8 +74,8 @@ text = "Customize"
 layout_mode = 2
 focus_neighbor_top = NodePath("../CustomizationButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
-theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_colors/icon_focus_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_fonts/font = ExtResource("1_t0slr")
 theme_override_font_sizes/font_size = 32
 text = "Options"
@@ -84,8 +84,8 @@ text = "Options"
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
-theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_colors/icon_focus_color = Color(0.345098, 0.345098, 0.345098, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.415686, 1, 1)
 theme_override_fonts/font = ExtResource("1_t0slr")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
@@ -126,6 +126,6 @@ text = "[center]Leader[color=#cb6aff]Board[/color][/center]"
 scroll_active = false
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CustomizationButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CustomizationButton" to="." method="_on_customization_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

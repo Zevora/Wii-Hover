@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=4 uid="uid://rusyvvw6jya4"]
 
-[ext_resource type="Script" path="res://scripts/speed_boost.gd" id="2_pf5gm"]
+[ext_resource type="Script" uid="uid://88bc4426vutl" path="res://scripts/speed_boost.gd" id="2_pf5gm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u515i"]
 resource_name = "mat0"

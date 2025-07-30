@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://by38ogt6sjbpg"]
 
-[ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_3blga"]
-[ext_resource type="Shader" path="res://shaders/starry_sky.gdshader" id="2_6wcx1"]
-[ext_resource type="Script" path="res://scripts/distance_control.gd" id="4_m7ls3"]
+[ext_resource type="Script" uid="uid://d0h4qb5cy2rhs" path="res://scripts/gameManager.gd" id="1_3blga"]
+[ext_resource type="Shader" uid="uid://cpkkvqto84q8a" path="res://shaders/starry_sky.gdshader" id="2_6wcx1"]
+[ext_resource type="Script" uid="uid://dydi00ji4xdrk" path="res://scripts/distance_control.gd" id="4_m7ls3"]
 [ext_resource type="PackedScene" uid="uid://beppev8nvhd1b" path="res://scenes/player_with_spring_arm.tscn" id="4_skstr"]
-[ext_resource type="Script" path="res://scripts/spring_arm_3d.gd" id="5_a3o23"]
-[ext_resource type="Script" path="res://scripts/high_score.gd" id="6_7qhkf"]
-[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="7_on7d8"]
+[ext_resource type="Script" uid="uid://bpyrovix2vxew" path="res://scripts/spring_arm_3d.gd" id="5_a3o23"]
+[ext_resource type="Script" uid="uid://boewfvvjmiwt1" path="res://scripts/high_score.gd" id="6_7qhkf"]
+[ext_resource type="Shader" uid="uid://dpqpqs6y66voc" path="res://shaders/dither.gdshader" id="7_on7d8"]
 [ext_resource type="Texture2D" uid="uid://crrkdww058xop" path="res://shaders/slso8-1x.png" id="8_k02d2"]
 [ext_resource type="Texture2D" uid="uid://ukls53r4glw1" path="res://shaders/dither_matrix.png" id="9_touuj"]
 
@@ -37,12 +37,12 @@ fog_sky_affect = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ckdhn"]
 shader = ExtResource("7_on7d8")
+shader_parameter/u_dither_tex = ExtResource("9_touuj")
+shader_parameter/u_color_tex = ExtResource("8_k02d2")
 shader_parameter/u_bit_depth = 32
 shader_parameter/u_contrast = 1.0
 shader_parameter/u_offset = 0.0
 shader_parameter/u_dither_size = 1
-shader_parameter/u_dither_tex = ExtResource("9_touuj")
-shader_parameter/u_color_tex = ExtResource("8_k02d2")
 
 [node name="Level 1" type="Node3D"]
 

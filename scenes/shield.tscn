@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bro740x77mvfj"]
 
-[ext_resource type="Script" path="res://scripts/shield_power_up.gd" id="1_nlkr0"]
+[ext_resource type="Script" uid="uid://b06tkv3niy8fb" path="res://scripts/shield_power_up.gd" id="1_nlkr0"]
 [ext_resource type="PackedScene" uid="uid://bklm1py1smef1" path="res://scenes/shield_inherited_model.tscn" id="3_wlgw0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_m7te6"]

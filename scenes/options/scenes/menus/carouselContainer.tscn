@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl3gfd4fyxwe1"]
+
+[ext_resource type="Script" uid="uid://bqh7l6i2tr0jf" path="res://scenes/options/scenes/menus/carousel_container.gd" id="1_vdhdp"]
+
+[node name="CarouselContainer" type="Node2D" node_paths=PackedStringArray("position_offset_node")]
+script = ExtResource("1_vdhdp")
+position_offset_node = NodePath("Control")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = nan
+offset_right = nan
+
+[node name="Panel" type="Panel" parent="Control"]
+z_index = 1
+layout_mode = 0
+offset_left = nan
+offset_top = -20.0
+offset_right = nan
+offset_bottom = 20.0
+pivot_offset = Vector2(nan, 20)
+
+[node name="Panel2" type="Panel" parent="Control"]
+modulate = Color(1, 1, 1, 0.65)
+z_index = -1
+layout_mode = 0
+offset_left = nan
+offset_top = -20.0
+offset_right = nan
+offset_bottom = 20.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(nan, 20)
+
+[node name="Panel3" type="Panel" parent="Control"]
+modulate = Color(1, 1, 1, 0.3)
+z_index = -2
+layout_mode = 0
+offset_left = nan
+offset_top = -20.0
+offset_right = nan
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(nan, 20)
+
+[node name="Panel4" type="Panel" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+z_index = -3
+layout_mode = 0
+offset_left = nan
+offset_top = -20.0
+offset_right = nan
+offset_bottom = 20.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(nan, 20)
+
+[node name="Panel5" type="Panel" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+z_index = -4
+layout_mode = 0
+offset_left = nan
+offset_top = -20.0
+offset_right = nan
+offset_bottom = 20.0
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(nan, 20)

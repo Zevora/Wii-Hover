@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://1us8r46srm72"]
+
+[ext_resource type="Script" uid="uid://bgvbya2oos64k" path="res://scenes/options/scenes/menus/carousel_3d.gd" id="1_mjalp"]
+[ext_resource type="PackedScene" uid="uid://c4fvty0cofra1" path="res://scenes/hoverboard_inherited.tscn" id="2_j8g6y"]
+[ext_resource type="Script" uid="uid://bj2m7otp408h4" path="res://scenes/options/scenes/menus/main_menu_button.gd" id="3_j8g6y"]
+[ext_resource type="FontFile" uid="uid://khpia2af10p7" path="res://assets/fonts/continuum/contm.ttf" id="3_lnkk2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mjalp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8g6y"]
+albedo_color = Color(0.573352, 0.0822121, 0.226267, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mjalp"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjalp"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Carousel3d" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0)
+script = ExtResource("1_mjalp")
+
+[node name="hoverboard" parent="Carousel3d" instance=ExtResource("2_j8g6y")]
+transform = Transform3D(1.19249e-08, -4.37114e-08, -1, -1, -4.37114e-08, -1.19249e-08, -4.37114e-08, 1, -4.37114e-08, -12, 0, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Carousel3d/hoverboard"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Current Board"
+
+[node name="hoverboard2" parent="Carousel3d" instance=ExtResource("2_j8g6y")]
+transform = Transform3D(1.19249e-08, -4.37114e-08, -1, -1, -4.37114e-08, -1.19249e-08, -4.37114e-08, 1, -4.37114e-08, -8.00001, 0, 0)
+
+[node name="hoverboard3" parent="Carousel3d" instance=ExtResource("2_j8g6y")]
+transform = Transform3D(1.19249e-08, -4.37114e-08, -1, -1, -4.37114e-08, -1.19249e-08, -4.37114e-08, 1, -4.37114e-08, -4.00001, 0, 0)
+
+[node name="hoverboard4" parent="Carousel3d" instance=ExtResource("2_j8g6y")]
+transform = Transform3D(1.19249e-08, -4.37114e-08, -1, -1, -4.37114e-08, -1.19249e-08, -4.37114e-08, 1, -4.37114e-08, -4.00001, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+light_energy = 8.0
+spot_range = 16.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, -4.9)
+visible = false
+mesh = SubResource("CylinderMesh_mjalp")
+surface_material_override/0 = SubResource("StandardMaterial3D_j8g6y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.58307e-06, 0, -1)
+mesh = SubResource("PlaneMesh_mjalp")
+surface_material_override/0 = SubResource("StandardMaterial3D_mjalp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MainMenuButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -75.0
+offset_right = 82.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_lnkk2")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+script = ExtResource("3_j8g6y")
+
+[connection signal="pressed" from="Control/MainMenuButton" to="Control/MainMenuButton" method="_on_pressed"]

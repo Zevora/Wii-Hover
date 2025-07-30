@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xat4aff80oev"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_664xd"]
+[ext_resource type="Script" uid="uid://b3gof48x5mcro" path="res://scripts/player.gd" id="1_664xd"]
 [ext_resource type="PackedScene" uid="uid://1xkro3kl0omq" path="res://scenes/jasmine.tscn" id="2_8bu5g"]
 [ext_resource type="PackedScene" uid="uid://c01k7rf1jkafx" path="res://assets/back_to_the_future_ii_-_hover_board_low_poly/scene.gltf" id="3_dbune"]
 
